@@ -12,6 +12,7 @@ let formSubmitHandler = function(e){
   let username = nameIput.value.trim();
 
   if (username) {
+   // console.log(`show me the username:`, username);
     getUserRepos(username);
     repoContainerEl.textContent = '';
     nameInputEl.value = '';
@@ -30,6 +31,25 @@ let buttonClickHandler = function(e) {
   }
 };
 
+
+
+
+
+let getFeaturedRepos = function(language){
+
+  let apiUrl = 'https://api.github.com/search/repositories?q=' + language + '+is:featured&sort=help-wanted-issues';
+
+  fetch(apiUrl).then(function(response){
+    if(response.ok) {
+      response.json().then(function(data){
+        //console.log(data);
+        displayRepos(data.items, language);
+      });
+    } else {
+      alert('Error: ' + response.statusText);
+    }
+  });
+};
 
 
 
