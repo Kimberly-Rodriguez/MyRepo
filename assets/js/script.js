@@ -32,6 +32,32 @@ let buttonClickHandler = function(e) {
 };
 
 
+let displayRepos = function(repos, searchTerm){
+  if (repos.length === 0) {
+    repoContainerEl.textContent = "No repositories found.";
+    return;
+  }
+
+  repoSearchTerm.textContent = searchTerm;
+
+  for (let i = 0; i < repos.length; i++) {
+    let repoName = repo[i].owner.login + '/' + repo[i].name;
+
+    let repoEl = document.createElement('div');
+    repoEl.classList = "list-item flex-row justify-space between align-center";
+
+    let titleEl = document.createElement('span');
+    titleEl.textContent = repoName;
+
+    repoEl.appendChild(titleEl);
+
+    var statusEl = document.createElement('span');
+    statusEl.classList = 'flex-row align-center';
+
+   
+  }
+}
+
 
 
 
