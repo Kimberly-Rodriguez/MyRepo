@@ -6,7 +6,6 @@ var repoContainerEl = document.querySelector('#repos-container');
 var repoSearchTerm = document.querySelector('#repo-search-term');
 
 
-
 let formSubmitHandler = function(e){
   e.preventdefult();
 
@@ -21,8 +20,20 @@ let formSubmitHandler = function(e){
     }
 };
 
+let buttonClickHandler = function(e) {
+  let language = e.target.getAttribute('data-language');
+
+  if (language){
+    getFeaturedRepos(language);
+    
+    repoContainerEl.textContent = "";
+  }
+};
+
+
 
 
 
 
 userFormEl.addEventListener('submit', formSubmitHandler);
+languageButtonsEl.addEventListener('click', buttonClickHandler);
